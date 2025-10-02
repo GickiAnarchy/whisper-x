@@ -1,7 +1,7 @@
 import json
 import os # Used only to create a sample file for demonstration
 
-def format_json_file(input_filename = "lyrics.json", output_filename = "lyrics2.json", indent_size=4):
+def format_json_file(input_filename = "btmb.json", output_filename = "lyrics2.json", indent_size=4):
     """
     Reads a JSON file, rewrites it to a new file with improved,
     human-readable indentation.
