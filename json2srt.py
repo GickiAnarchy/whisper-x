@@ -1,25 +1,29 @@
 import json
 
-def format_time(milliseconds):
-    seconds = int(milliseconds / 1000)
-    ms = int(milliseconds % 1000)
-    minutes, seconds = divmod(seconds, 60)
-    hours, minutes = divmod(minutes, 60)     
-    return f"{hours:02d}:{minutes:02d}:{seconds:02d},{ms:03d}"
+def format_timestamp(seconds):
+    """Formats a float timestamp into SRT format (HH:MM:SS,ms)."""
+    if seconds is None:
+        return "00:00:00,000"
+    hours = int(seconds // 3600)
+    minutes = int((seconds % 3600) // 60)
+    seconds = seconds % 60
+    milliseconds = int((seconds - int(seconds)) * 1000)
+    return f"{hours:02d}:{minutes:02d}:{int(seconds):02d},{milliseconds:03d}"
 
-def json_to_srt(json_file_path, srt_file_path):
-    with open(json_file_path, 'r', encoding='utf-8') as f:
+def convert_whisperx_json_to_srt(json_filepath, srt_filepath):
+    """Converts a WhisperX JSON output file to an SRT file."""
+    with open(json_filepath, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    with open(srt_file_path, 'w', encoding='utf-8') as srt_file:
+    with open(srt_filepath, 'w', encoding='utf-8') as f:
         for i, segment in enumerate(data['segments']):
-            start_time = format_time(segment['start'])
-            end_time = format_time(segment['end'])
+            start_time = format_timestamp(segment['start'])
+            end_time = format_timestamp(segment['end'])
             text = segment['text'].strip()
 
-            srt_file.write(f"{i + 1}\n")
-            srt_file.write(f"{start_time} --> {end_time}\n")
-            srt_file.write(f"{text}\n\n")
+            f.write(f"{i + 1}\n")
+            f.write(f"{start_time} --> {end_time}\n")
+            f.write(f"{text}\n\n")
 
-    # Example usage:
-json_to_srt('mic_small.json', 'output.srt')
+if __name__ == "__main__":
+    convert_whisperx_json_to_srt('btmb.json', 'output.srt')
