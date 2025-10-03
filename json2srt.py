@@ -40,7 +40,7 @@ def whisperx_json_to_word_level_srt(json_path, srt_path):
 
 
 if __name__ == "__main__":
-    json_file = 'btmb.json'
+    json_file = 4'btmb.json'
     srt_file = 'your_output_word_level.srt'
     
     whisperx_json_to_word_level_srt(json_file, srt_file)
