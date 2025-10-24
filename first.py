@@ -6,7 +6,7 @@ import gc
 
 # --- Configuration ---
 # 1. Directory to search for audio files
-AUDIO_DIR = "./music/"
+AUDIO_DIR = "music/"
 # 2. Output directory for subtitle files (will be created if it doesn't exist)
 OUTPUT_DIR = "./subtitles/"
 # 3. Model parameters
