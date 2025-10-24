@@ -7,7 +7,7 @@ import json # Added for JSON file handling
 
 # --- Configuration ---
 # 1. Directory to search for audio files
-AUDIO_DIR = "./.music/"
+AUDIO_DIR = "whisper-x/music/"
 # 2. Output directory for subtitle files (will be created if it doesn't exist)
 OUTPUT_DIR = "./subtitles/"
 # 3. Model parameters (Same as before, keep these if using Colab/GPU)
