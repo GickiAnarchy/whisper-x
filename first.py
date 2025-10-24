@@ -8,7 +8,7 @@ import gc
 # 1. Directory to search for audio files
 AUDIO_DIR = "whisper-x/music/"
 # 2. Output directory for subtitle files (will be created if it doesn't exist)
-OUTPUT_DIR = "./subtitles/"
+OUTPUT_DIR = "whisper-x/subtitles/"
 # 3. Model parameters
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 COMPUTE_TYPE = "float16" if DEVICE == "cuda" else "int8" # Use float16 on CUDA for speed/memory
