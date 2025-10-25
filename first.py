@@ -9,7 +9,7 @@ import json # Added for JSON file handling
 # 1. Directory to search for audio files
 AUDIO_DIR = "whisper-x/music/"
 # 2. Output directory for subtitle files (will be created if it doesn't exist)
-OUTPUT_DIR = "./subtitles/"
+OUTPUT_DIR = "whisper-x/subtitles/"
 # 3. Model parameters (Same as before, keep these if using Colab/GPU)
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 COMPUTE_TYPE = "float16" if DEVICE == "cuda" else "int8"
